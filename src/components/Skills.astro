@@ -1,0 +1,89 @@
+---
+const skillCategories = [
+  {
+    title: 'Mobile Development',
+    icon: '📱',
+    color: 'from-violet-500/20 to-violet-600/5',
+    borderColor: 'border-violet-500/20',
+    tagColor: 'bg-violet-500/10 text-violet-300 border-violet-500/20',
+    skills: ['React Native', 'Expo', 'React Navigation', 'Expo Router'],
+  },
+  {
+    title: 'Platforms',
+    icon: '⚡',
+    color: 'from-blue-500/20 to-blue-600/5',
+    borderColor: 'border-blue-500/20',
+    tagColor: 'bg-blue-500/10 text-blue-300 border-blue-500/20',
+    skills: ['Android', 'iOS', 'Cross-Platform'],
+  },
+  {
+    title: 'Backend & Database',
+    icon: '🔥',
+    color: 'from-orange-500/20 to-orange-600/5',
+    borderColor: 'border-orange-500/20',
+    tagColor: 'bg-orange-500/10 text-orange-300 border-orange-500/20',
+    skills: ['Firebase', 'Firestore', 'Firebase Auth', 'REST APIs', 'AsyncStorage'],
+  },
+  {
+    title: 'Languages',
+    icon: '💻',
+    color: 'from-emerald-500/20 to-emerald-600/5',
+    borderColor: 'border-emerald-500/20',
+    tagColor: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
+    skills: ['JavaScript', 'TypeScript', 'C Programming', 'HTML', 'CSS'],
+  },
+  {
+    title: 'Tools & Workflow',
+    icon: '🛠️',
+    color: 'from-pink-500/20 to-pink-600/5',
+    borderColor: 'border-pink-500/20',
+    tagColor: 'bg-pink-500/10 text-pink-300 border-pink-500/20',
+    skills: ['Git', 'GitHub', 'VS Code', 'Expo Go', 'Android Studio'],
+  },
+  {
+    title: 'Soft Skills',
+    icon: '🤝',
+    color: 'from-slate-500/20 to-slate-600/5',
+    borderColor: 'border-slate-500/20',
+    tagColor: 'bg-slate-500/10 text-slate-300 border-slate-500/20',
+    skills: ['Problem Solving', 'Debugging', 'Team Collaboration', 'Communication'],
+  },
+];
+---
+
+<section id="skills" class="py-24 relative">
+  <!-- Subtle background separator -->
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/30 to-transparent pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto px-6 relative">
+    <div data-animate>
+      <span class="section-label">02. skills</span>
+      <h2 class="section-title">What I Work With</h2>
+      <div class="section-bar"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {
+        skillCategories.map((cat, i) => (
+          <div
+            data-animate
+            style={`transition-delay: ${i * 80}ms`}
+            class={`rounded-xl p-5 border bg-gradient-to-br ${cat.color} ${cat.borderColor} backdrop-blur-sm hover:scale-[1.02] transition-transform duration-300`}
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-2xl">{cat.icon}</span>
+              <h3 class="text-sm font-semibold text-slate-200 uppercase tracking-wide">{cat.title}</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {cat.skills.map((skill) => (
+                <span class={`px-2.5 py-1 rounded-md text-xs font-medium border ${cat.tagColor}`}>
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

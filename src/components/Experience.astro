@@ -1,0 +1,118 @@
+---
+const experiences = [
+  {
+    company: 'Wowsly',
+    role: 'React Native Developer',
+    period: 'Nov 2025 – Present',
+    type: 'Full-time',
+    current: true,
+    description: 'Building and maintaining a React Native mobile app for an event management platform used by organizers and attendees.',
+    highlights: [
+      'Developed event creation, ticket booking, and QR-code based entry system',
+      'Implemented real-time attendee management and check-in flows',
+      'Integrated third-party APIs, form validation, and performance optimizations',
+      'Improved UI/UX across key user journeys, reducing friction in core flows',
+    ],
+    tech: ['React Native', 'Expo', 'Firebase', 'REST APIs', 'QR Code'],
+  },
+  {
+    company: 'Illusio Designs',
+    role: 'React Native Developer',
+    period: 'May 2025 – Sep 2025',
+    type: 'Full-time',
+    current: false,
+    description: 'Built responsive cross-platform mobile applications and integrated Firebase services across multiple client projects.',
+    highlights: [
+      'Built 2+ cross-platform apps using React Native for Android and iOS',
+      'Integrated Firebase Authentication, Firestore, and Cloud Notifications',
+      'Collaborated with design and backend teams to deliver scalable solutions',
+    ],
+    tech: ['React Native', 'Firebase', 'Expo', 'JavaScript'],
+  },
+  {
+    company: 'Grafizen',
+    role: 'Mobile App Development Intern',
+    period: 'Jul 2024 – Sep 2024',
+    type: 'Internship',
+    current: false,
+    description: 'Gained practical industry experience in mobile application development, working on real-world features and client-facing products.',
+    highlights: [
+      'Worked on real-world mobile app features in a professional environment',
+      'Improved debugging and code review skills alongside senior developers',
+      'Contributed to the delivery of user-facing product features',
+    ],
+    tech: ['React Native', 'JavaScript', 'Mobile Development'],
+  },
+];
+---
+
+<section id="experience" class="py-24 relative">
+  <div class="max-w-6xl mx-auto px-6">
+    <div data-animate>
+      <span class="section-label">03. experience</span>
+      <h2 class="section-title">Where I've Worked</h2>
+      <div class="section-bar"></div>
+    </div>
+
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-violet-600 via-blue-600 to-transparent hidden md:block"></div>
+
+      <div class="space-y-10">
+        {
+          experiences.map((exp, i) => (
+            <div data-animate style={`transition-delay: ${i * 100}ms`} class="relative md:pl-16">
+              <!-- Timeline dot -->
+              <div class="absolute left-4 top-6 hidden md:flex">
+                <div class={`w-4 h-4 rounded-full border-2 shadow-lg -translate-x-1/2 ${exp.current ? 'bg-violet-500 border-violet-400 shadow-violet-500/40' : 'bg-slate-700 border-slate-600'}`} />
+                {exp.current && (
+                  <div class="absolute inset-0 w-4 h-4 rounded-full bg-violet-500 animate-ping opacity-30 -translate-x-1/2" />
+                )}
+              </div>
+
+              <div class="card p-6 md:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
+                  <div>
+                    <div class="flex items-center gap-3 mb-1">
+                      <h3 class="text-lg font-bold text-white">{exp.role}</h3>
+                      {exp.current && (
+                        <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
+                          Current
+                        </span>
+                      )}
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-violet-400 font-semibold">{exp.company}</span>
+                      <span class="text-slate-600">·</span>
+                      <span class="text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded">{exp.type}</span>
+                    </div>
+                  </div>
+                  <span class="font-mono text-sm text-slate-500 whitespace-nowrap">{exp.period}</span>
+                </div>
+
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">{exp.description}</p>
+
+                <ul class="space-y-2 mb-5">
+                  {exp.highlights.map((point) => (
+                    <li class="flex items-start gap-2 text-sm text-slate-300">
+                      <span class="text-violet-500 mt-1 shrink-0">▹</span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+
+                <div class="flex flex-wrap gap-2">
+                  {exp.tech.map((t) => (
+                    <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-mono">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

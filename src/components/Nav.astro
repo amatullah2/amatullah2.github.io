@@ -1,0 +1,102 @@
+---
+---
+
+<header
+  id="nav"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-2 group">
+      <div
+        class="w-9 h-9 rounded-lg bg-gradient-to-br from-violet-600 to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-violet-600/20"
+      >
+        AB
+      </div>
+      <span class="font-semibold text-slate-200 group-hover:text-white transition-colors hidden sm:block">
+        Amatullah
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-8">
+      {
+        ['About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
+          <a
+            href={`#${item.toLowerCase()}`}
+            class="text-sm text-slate-400 hover:text-white transition-colors font-medium relative group"
+          >
+            {item}
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-blue-500 group-hover:w-full transition-all duration-300" />
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Resume CTA -->
+    <div class="hidden md:flex items-center gap-3">
+      <a
+        href="/resume.pdf"
+        download
+        class="text-sm px-4 py-2 rounded-lg border border-violet-500/40 text-violet-300 hover:bg-violet-600/10 hover:border-violet-400 transition-all font-medium"
+      >
+        Resume ↗
+      </a>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <input type="checkbox" id="menu-open" class="hidden peer" />
+    <label
+      for="menu-open"
+      class="md:hidden flex flex-col gap-1.5 cursor-pointer p-2 rounded-lg hover:bg-slate-800 transition-colors"
+      aria-label="Toggle menu"
+    >
+      <span class="w-5 h-0.5 bg-slate-400 transition-all peer-checked:rotate-45"></span>
+      <span class="w-5 h-0.5 bg-slate-400"></span>
+      <span class="w-5 h-0.5 bg-slate-400 transition-all"></span>
+    </label>
+
+    <!-- Mobile Menu -->
+    <div
+      class="hidden peer-checked:flex absolute top-full left-0 right-0 flex-col bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 px-6 py-4 gap-4 md:hidden"
+    >
+      {
+        ['About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
+          <a
+            href={`#${item.toLowerCase()}`}
+            class="text-slate-300 hover:text-white font-medium py-1 transition-colors"
+          >
+            {item}
+          </a>
+        ))
+      }
+      <a
+        href="/resume.pdf"
+        download
+        class="text-violet-300 font-medium py-1 hover:text-violet-200 transition-colors"
+      >
+        Download Resume ↗
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const nav = document.getElementById('nav');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      nav?.classList.add('bg-slate-950/90', 'backdrop-blur-xl', 'border-b', 'border-slate-800/60', 'shadow-lg');
+    } else {
+      nav?.classList.remove('bg-slate-950/90', 'backdrop-blur-xl', 'border-b', 'border-slate-800/60', 'shadow-lg');
+    }
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('#nav a').forEach((link) => {
+    link.addEventListener('click', () => {
+      const toggle = document.getElementById('menu-open') as HTMLInputElement;
+      if (toggle) toggle.checked = false;
+    });
+  });
+</script>

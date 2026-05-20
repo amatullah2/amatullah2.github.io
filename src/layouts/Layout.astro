@@ -1,0 +1,284 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Amatullah Bharmal — React Native Developer',
+  description = 'React Native Developer building high-performance cross-platform mobile apps for Android & iOS using React Native, Expo, and Firebase.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="React Native Developer, Mobile App Developer, Android iOS, Firebase, Expo, JavaScript, Gujarat India, Amatullah Bharmal" />
+    <meta name="author" content="Amatullah Bharmal" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://amatullah2.github.io" />
+    <meta property="og:image" content="https://amatullah2.github.io/profile.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delius&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-slate-950 text-slate-100 font-sans antialiased overflow-x-hidden">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  /* CSS Houdini custom property for spinning conic ring */
+  @property --ring-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #020617; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #7c3aed, #3b82f6);
+    border-radius: 4px;
+  }
+
+  /* ── Animated flowing gradient text ── */
+  .gradient-text {
+    background: linear-gradient(270deg, #a78bfa, #60a5fa, #f9a8d4, #6ee7b7, #a78bfa);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-flow 8s ease infinite;
+  }
+
+  @keyframes gradient-flow {
+    0%   { background-position: 0%   50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0%   50%; }
+  }
+
+  /* ── Section typography ── */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8b5cf6;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Delius', cursive;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #f1f5f9;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  /* Animated accent bar */
+  .section-bar {
+    width: 4rem;
+    height: 3px;
+    background: linear-gradient(to right, #7c3aed, #60a5fa, #a78bfa, #7c3aed);
+    background-size: 200% 100%;
+    border-radius: 9999px;
+    margin-bottom: 3rem;
+    animation: bar-shimmer 4s ease-in-out infinite;
+  }
+
+  @keyframes bar-shimmer {
+    0%, 100% { background-position: 0%   50%; }
+    50%       { background-position: 100% 50%; }
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(30, 41, 59, 0.8);
+    border-radius: 1rem;
+    transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .card:hover {
+    border-color: rgba(139, 92, 246, 0.45);
+    transform: translateY(-4px);
+    box-shadow:
+      0 0 0 1px rgba(139, 92, 246, 0.1),
+      0 0 40px rgba(139, 92, 246, 0.12),
+      0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    color: white;
+    border-radius: 0.625rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* shimmer sweep on btn-primary */
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -65%;
+    width: 35%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-20deg);
+    animation: btn-shimmer 3.5s ease-in-out infinite 1.2s;
+  }
+
+  @keyframes btn-shimmer {
+    0%   { left: -65%; opacity: 0; }
+    10%  { opacity: 1; }
+    65%  { left: 130%; opacity: 0; }
+    100% { left: 130%; opacity: 0; }
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.5);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border: 1px solid rgba(100, 116, 139, 0.5);
+    color: #cbd5e1;
+    border-radius: 0.625rem;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-outline:hover {
+    border-color: #8b5cf6;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(139, 92, 246, 0.22);
+  }
+
+  /* ── Spinning conic ring for profile photo ── */
+  /* Modern browsers: CSS Houdini animates --ring-angle */
+  .spin-ring-outer {
+    background: conic-gradient(
+      from var(--ring-angle),
+      #7c3aed, #3b82f6, #a78bfa, #f472b6, #60a5fa, #7c3aed
+    );
+    animation: spin-ring 5s linear infinite;
+  }
+
+  @keyframes spin-ring {
+    to { --ring-angle: 360deg; }
+  }
+
+  /* ── Typewriter cursor ── */
+  .typewriter-cursor {
+    display: inline-block;
+    color: #a78bfa;
+    animation: blink 1s step-end infinite;
+    margin-left: 1px;
+    font-weight: 300;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  /* ── Scroll-triggered entrance animations ── */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  [data-animate].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Background orb drifting ── */
+  @keyframes orb-drift-a {
+    0%, 100% { transform: translate(0px,   0px)  scale(1);    }
+    33%       { transform: translate(35px, -25px) scale(1.06); }
+    66%       { transform: translate(-20px, 30px) scale(0.94); }
+  }
+  @keyframes orb-drift-b {
+    0%, 100% { transform: translate(0px,   0px)  scale(1);    }
+    33%       { transform: translate(-30px, 20px) scale(1.05); }
+    66%       { transform: translate(25px, -30px) scale(0.96); }
+  }
+  @keyframes orb-drift-c {
+    0%, 100% { transform: translate(0px,  0px)  scale(1);    }
+    50%       { transform: translate(40px, -40px) scale(1.1); }
+  }
+
+  .animate-orb-a { animation: orb-drift-a 14s ease-in-out infinite; }
+  .animate-orb-b { animation: orb-drift-b 17s ease-in-out infinite; }
+  .animate-orb-c { animation: orb-drift-c 11s ease-in-out infinite; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('[data-animate]').forEach((el) => observer.observe(el));
+</script>
